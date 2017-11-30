@@ -1,0 +1,46 @@
+---
+title: "Using the `ag conversions` package"
+author: "Gurneet Braich"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the `ag conversions` package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+__Note__: This package isn't actually meant to be "serious". I made it just for teaching purposes.
+
+Want to convert agricultural statistics without having to manual change every datapoint or lookup conversion ratios? Checkout the functionality offered by `hectares`, `sqmeters`, `mtonnes`, `celcius` and `kgha` by loading the `agconversions` package! 
+
+```{r}
+library(agconversions)
+```
+
+Want to get out of the middle ages with acres, pounds and farenheit? Never mess up the temperature or an application rate again. Check out the functions below
+
+```{r}
+hectares(100:105)
+mtonnes(20000)
+sqmeters(5000)
+celcius(32:40)
+kgha(12.5)
+```
+
+`apply`-family friendly, too!
+
+```{r}
+my_list <- list(50:60, 32, -10)
+## So base-R-boring!
+lapply(my_list, function(x) (x-32)*5/9)
+## Use celcius instead!
+lapply(my_list, celcius)
+```
+
+It even comes with the ability to display its output in plot form!
+
+```{r}
+hectares(50:60, plot_it=TRUE)
+```
+
+How about that!!!
